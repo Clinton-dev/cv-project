@@ -1,0 +1,139 @@
+this.state = {
+      name: "",
+      email: "",
+      phone: "",
+      schoolName: "",
+      titleOfStudy: "",
+      dateOfStudy: "",
+      company: "",
+      position: "",
+      task: "",
+      dateFromWork: "",
+      dateUntilWork: ""
+    }
+
+    handleInput(event) {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
+  } 
+
+ <form className="cv-form" onSubmit={this.handleSubmit}>
+
+          <label><strong>General Information</strong></label><br />
+          <label>Name: </label>
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={this.state.name}
+            onChange={this.handleInput}
+          /><br />
+          <label>Email: </label>
+          <input
+            type="email"
+            placeholder="email"
+            name="email"
+            value={this.state.email}
+            onChange={this.handleInput}
+          /><br />
+          <label>Phone no: </label>
+          <input
+            type="tel"
+            placeholder="phone number"
+            name="phone"
+            value={this.state.phone}
+            onChange={this.handleInput}
+          /><br /><br />
+          {/* education experience */}
+          <label><strong>education experience</strong></label><br />
+          <label>School Name: </label>
+          <input
+            type="text"
+            placeholder="school name"
+            name="schoolName"
+            value={this.state.schoolName}
+            onChange={this.handleInput}
+          /><br/>
+          <label>Field of Study: </label>
+          <input
+            type="text"
+            placeholder="title of study"
+            name="titleOfStudy"
+            value={this.state.titleOfStudy}
+            onChange={this.handleInput}
+          /><br/>
+          <label>Date of Study: </label>
+          <input
+            type="text"
+            placeholder="date of study"
+            name="dateOfStudy"
+            value={this.state.dateOfStudy}
+            onChange={this.handleInput}
+          /><br /><br />
+          {/* practical experience */}
+          <label><strong>practical experience</strong></label><br />
+          <label>Company Name: </label>
+          <input
+            type="text"
+            placeholder="Company Name"
+            name="company"
+            value={this.state.company}
+            onChange={this.handleInput}
+          /><br />
+          <label>Title Of Position: </label>
+          <input
+            type="text"
+            placeholder="Postion title"
+            name="position"
+            value={this.state.position}
+            onChange={this.handleInput}
+          /><br />
+          <label>Task Done: </label>
+          <input
+            type="text"
+            placeholder="Main task your job"
+            name="task"
+            value={this.state.task}
+            onChange={this.handleInput}
+          /><br />
+          <label>Date From: </label>
+          <input
+            type="text"
+            placeholder="Date from when you worked for the company"
+            name="dateFromWork"
+            value={this.state.dateFromWork}
+            onChange={this.handleInput}
+          /><br />
+          <label>Date Until: </label>
+          <input
+            type="text"
+            placeholder="Date from when you worked for the company"
+            name="dateUntilWork"
+            value={this.state.dateUntilWork}
+            onChange={this.handleInput}
+          /><br />
+          <button>Submit your CV</button>
+        </form>
+
+        <div className="results">
+          <h1>Information you entered:</h1>
+          <h3>{this.state.name}</h3>
+          <h3>{this.state.email}</h3>
+          <h3>{this.state.phone}</h3>
+          <h3>{this.state.schoolName}</h3>
+          <h3>{this.state.titleOfStudy}</h3>
+          <h3>{this.state.dateOfStudy}</h3>
+          <h3>{this.state.company}</h3>
+          <h3>{this.state.position}</h3>
+          <h3>{this.state.task}</h3>
+          <h3>{this.state.dateFromWork}</h3>
+          <h3>{this.state.dateUntilWork}</h3>
+        </div>
+
+        <header>
+          <h2>CV Submission</h2>
+          <p>Do you want to work with us? Please fill in your details below.</p>
+        </header>
