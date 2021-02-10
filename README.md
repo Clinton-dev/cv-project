@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A small cv-app to help solidify State and Props concept that I have learnt so far.
 
 ## Available Scripts
 
