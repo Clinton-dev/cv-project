@@ -4,7 +4,7 @@ import React from 'react';
 class GeneralExperience extends React.Component {
   constructor(props){
     super(props);
-    this.setState = {
+    this.state = {
       name: "john",
       email: "",
       phone: "",
@@ -22,7 +22,7 @@ class GeneralExperience extends React.Component {
     return(
       <div>
         <label><strong>General Information</strong></label><br />
-        <label>Name: </label>
+        <label>Name: </label><br/>
           <input
             type="text"
             placeholder="Name"
@@ -30,14 +30,14 @@ class GeneralExperience extends React.Component {
             
             onChange={this.handleInput}
           /><br />
-        <label>Email: </label>
+        <label>Email: </label><br/>
           <input
             type="email"
             placeholder="email"
             name="email"
             onChange={this.handleInput}
           /><br />
-          <label>Phone no: </label>
+          <label>Phone no: </label><br/>
           <input
             type="tel"
             placeholder="phone number"
