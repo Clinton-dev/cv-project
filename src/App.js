@@ -12,8 +12,8 @@ function App() {
           <h2>CV Submission</h2>
           <p>Do you want to work with us? Please fill in your details below.</p>
         </header>
-      <GeneralInfo />
-      <EducationExperience />
+      <GeneralInfo /><br />
+      <EducationExperience /><br />
       <PracticalExperience />
     </div>
   )

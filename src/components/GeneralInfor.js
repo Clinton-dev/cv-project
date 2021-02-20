@@ -20,7 +20,7 @@ class GeneralExperience extends React.Component {
   }
 
   handleSubmit (e) {
-  	//e.preventDefault;
+  	e.preventDefault();
   	this.setState( prevState => {
   		return {
   			edit: !prevState.edit
@@ -31,22 +31,26 @@ class GeneralExperience extends React.Component {
 
   render() {
   	const formEle = <form >
-  		<label>Name</label><br />
+
+  		<label className="form-label">Name</label>
   		<input 
+  			className="form-control"
   			type="text"
   			value={this.state.value}
   			name= "name"
   			onChange= {this.handleInput}
   		/><br />
-  		<label>email</label><br />
+  		<label className="form-label">email</label>
   		<input 
+  			className="form-control"
   			type="email"
   			value={this.state.value}
   			name= "email"
   			onChange= {this.handleInput}
   		/><br />
-  		<label>Phone</label><br />
+  		<label className="form-label">Phone</label>
   		<input 
+  			className="form-control"
   			type="phone"
   			value={this.state.value}
   			name= "phone"
@@ -58,15 +62,20 @@ class GeneralExperience extends React.Component {
   		<p> email: {this.state.email}</p>
   		<p> phone: {this.state.phone}</p>
   	</div>;
-  	const btnEle = <button onClick={ this.handleSubmit }>{ this.state.edit? "Subimt" : "Edit" }</button>;
+  	const btnEle = <button className="btn btn-primary" onClick={ this.handleSubmit }>{ this.state.edit? "Submit" : "Edit" }</button>;
   	
   	const res = this.state.edit? formEle : displayResults;
 
     return(
     	
       <div>	
-        { res }
-        { btnEle }
+      	<div class="card">
+  		  <div class="card-body">
+  		  { res }
+          { btnEle }
+  		  </div>
+		</div>
+        
       </div>
       
     )
