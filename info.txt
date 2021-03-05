@@ -1,139 +1,81 @@
-this.state = {
-      name: "",
-      email: "",
-      phone: "",
-      schoolName: "",
-      titleOfStudy: "",
-      dateOfStudy: "",
-      company: "",
-      position: "",
-      task: "",
-      dateFromWork: "",
-      dateUntilWork: ""
-    }
+class GeneralExperience extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			name: "",
+			email: "",
+			phone: "",
+			edit: true
+		};
+		this.handleInput = this.handleInput.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
 
-    handleInput(event) {
-    const { name, value } = event.target;
+	handleInput(e) {
+		const { name, value } = e.target;
+		this.setState({ [name]: value });
+	}
 
-    this.setState({
-      [name]: value
-    });
-  } 
+	handleSubmit(e) {
+		e.preventDefault();
+		this.setState(prevState => {
+			return {
+				edit: !prevState.edit
+			}
+		});
 
- <form className="cv-form" onSubmit={this.handleSubmit}>
+	}
 
-          <label><strong>General Information</strong></label><br />
-          <label>Name: </label>
-          <input
-            type="text"
-            placeholder="Name"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleInput}
-          /><br />
-          <label>Email: </label>
-          <input
-            type="email"
-            placeholder="email"
-            name="email"
-            value={this.state.email}
-            onChange={this.handleInput}
-          /><br />
-          <label>Phone no: </label>
-          <input
-            type="tel"
-            placeholder="phone number"
-            name="phone"
-            value={this.state.phone}
-            onChange={this.handleInput}
-          /><br /><br />
-          {/* education experience */}
-          <label><strong>education experience</strong></label><br />
-          <label>School Name: </label>
-          <input
-            type="text"
-            placeholder="school name"
-            name="schoolName"
-            value={this.state.schoolName}
-            onChange={this.handleInput}
-          /><br/>
-          <label>Field of Study: </label>
-          <input
-            type="text"
-            placeholder="title of study"
-            name="titleOfStudy"
-            value={this.state.titleOfStudy}
-            onChange={this.handleInput}
-          /><br/>
-          <label>Date of Study: </label>
-          <input
-            type="text"
-            placeholder="date of study"
-            name="dateOfStudy"
-            value={this.state.dateOfStudy}
-            onChange={this.handleInput}
-          /><br /><br />
-          {/* practical experience */}
-          <label><strong>practical experience</strong></label><br />
-          <label>Company Name: </label>
-          <input
-            type="text"
-            placeholder="Company Name"
-            name="company"
-            value={this.state.company}
-            onChange={this.handleInput}
-          /><br />
-          <label>Title Of Position: </label>
-          <input
-            type="text"
-            placeholder="Postion title"
-            name="position"
-            value={this.state.position}
-            onChange={this.handleInput}
-          /><br />
-          <label>Task Done: </label>
-          <input
-            type="text"
-            placeholder="Main task your job"
-            name="task"
-            value={this.state.task}
-            onChange={this.handleInput}
-          /><br />
-          <label>Date From: </label>
-          <input
-            type="text"
-            placeholder="Date from when you worked for the company"
-            name="dateFromWork"
-            value={this.state.dateFromWork}
-            onChange={this.handleInput}
-          /><br />
-          <label>Date Until: </label>
-          <input
-            type="text"
-            placeholder="Date from when you worked for the company"
-            name="dateUntilWork"
-            value={this.state.dateUntilWork}
-            onChange={this.handleInput}
-          /><br />
-          <button>Submit your CV</button>
-        </form>
+	render() {
+		// this should display input fields
+		const formEle = <form >
 
-        <div className="results">
-          <h1>Information you entered:</h1>
-          <h3>{this.state.name}</h3>
-          <h3>{this.state.email}</h3>
-          <h3>{this.state.phone}</h3>
-          <h3>{this.state.schoolName}</h3>
-          <h3>{this.state.titleOfStudy}</h3>
-          <h3>{this.state.dateOfStudy}</h3>
-          <h3>{this.state.company}</h3>
-          <h3>{this.state.position}</h3>
-          <h3>{this.state.task}</h3>
-          <h3>{this.state.dateFromWork}</h3>
-          <h3>{this.state.dateUntilWork}</h3>
-        </div>
+			<label className="form-label">Name</label>
+			<input
+				className="form-control"
+				type="text"
+				value={this.state.value}
+				name="name"
+				onChange={this.handleInput}
+			/><br />
+			<label className="form-label">email</label>
+			<input
+				className="form-control"
+				type="email"
+				value={this.state.value}
+				name="email"
+				onChange={this.handleInput}
+			/><br />
+			<label className="form-label">Phone</label>
+			<input
+				className="form-control"
+				type="phone"
+				value={this.state.value}
+				name="phone"
+				onChange={this.handleInput}
+			/><br />
+		</form>;
 
-        <header>
-          <h2>CV Submission</h2>
-          <p>Do you want to work with us? Please fill in your details below.</p>
-        </header>
+		const displayResults = <div>
+			<p> name: {this.state.name}</p>
+			<p> email: {this.state.email}</p>
+			<p> phone: {this.state.phone}</p>
+		</div>;
+		const btnEle = <button className="btn btn-primary" onClick={this.handleSubmit}>{this.state.edit ? "Submit" : "Edit"}</button>;
+
+		const res = this.state.edit ? formEle : displayResults;
+
+		return (
+
+			<div>
+				<div class="card">
+					<div class="card-body">
+						{res}
+						{btnEle}
+					</div>
+				</div>
+			</div>
+
+		)
+	}
+}
