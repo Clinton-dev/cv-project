@@ -1,81 +1,64 @@
-import React from 'react';
-// import './EducationalExprerince.css';
+import React, { useState, useEffect } from 'react';
 
-class EducationExperience extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-    	school: "",
-    	study: "",
-    	dateOfStudy: "",
-    	edit: true
-    };
-    this.handleInput = this.handleInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const EducationExperience = () => {
+	const [school, setSchool] = useState('');
+	const [study, setStudy] = useState('');
+	const [dateOfStudy, setdateOfStudy] = useState('');
+	const [edit, setEdit] = useState(true);
 
-  handleInput(e) {
-    const { name, value } = e.target;
-    this.setState({ [ name ]: value });
-  }
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setEdit(!edit);
 
-  handleSubmit (e) {
-  	e.preventDefault();
-  	this.setState( prevState => {
-  		return {
-  			edit: !prevState.edit
-  		}
-  	});
-  }
+	};
 
-  render() {      
- 	const formEle = <form >
-  		<label className="form-label">Name of school</label><br />
-  		<input 
-  			className="form-control"
-  			type="text"
-  			value={this.state.value}
-  			name= "school"
-  			onChange= {this.handleInput}
-  		/><br />
-  		<label className="form-label">Area of study</label><br />
-  		<input 
-  			className="form-control"
-  			type="text"
-  			value={this.state.value}
-  			name= "study"
-  			onChange= {this.handleInput}
-  		/><br />
-  		<label className="form-label">Date of study</label><br />
-  		<input 
-  			className="form-control"
-  			type="date"
-  			value={this.state.value}
-  			name= "dateOfStudy"
-  			onChange= {this.handleInput}
-  		/><br />
-  	</form>;
+	const formEle = <form >
+		<label className="form-label">Name of school</label><br />
+		<input
+			className="form-control"
+			type="text"
+			value={school}
+			name="school"
+			onChange={(e) => setSchool(e.target.value)}
+		/><br />
+		<label className="form-label">Area of study</label><br />
+		<input
+			className="form-control"
+			type="text"
+			value={study}
+			name="study"
+			onChange={(e) => setStudy(e.target.value)}
+		/><br />
+		<label className="form-label">Date of study</label><br />
+		<input
+			className="form-control"
+			type="date"
+			value={dateOfStudy}
+			name="dateOfStudy"
+			onChange={(e) => setdateOfStudy(e.target.value)}
+		/><br />
+	</form>;
 
-  	const displayResults = <div>
-  		<p> name of school: {this.state.school}</p>
-  		<p> area of study: {this.state.study}</p>
-  		<p> date of study: {this.state.dateOfStudy}</p>
-  	</div>;
-  	const btnEle = <button className="btn btn-primary" onClick={ this.handleSubmit }>{ this.state.edit? "Submit" : "Edit" }</button>;
-  	
-  	const res = this.state.edit? formEle : displayResults;
+	const displayResults = <div>
+		<p> name of school: {school}</p>
+		<p> area of study: {study}</p>
+		<p> date of study: {dateOfStudy}</p>
+	</div>;
+	const btnEle = <button className="btn btn-primary" onClick={handleSubmit}>{edit ? "Submit" : "Edit"}</button>;
 
-    return(
-      <div>
-      	<div class="card">
- 		   <div class="card-body">
-				{ res }
-	      		{ btnEle }
-  			</div>
+	const res = edit ? formEle : displayResults;
+
+	return (
+		<div>
+			<div class="card">
+				<div class="card-body">
+					{res}
+					{btnEle}
+				</div>
+			</div>
 		</div>
-      </div>
-    )
-  }
+	)
 }
+
 
 export default EducationExperience;

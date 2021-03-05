@@ -8,15 +8,6 @@ const GeneralExperience = () => {
 	const [ edit, setEdit ] = useState(true);
 
 
-	useEffect(() => {}, []);
-
-	const handleInput = (e) => {
-		const { value } = e.target;
-		setName( value );
-		setEmail( value );
-		setPhone( value );
-	};
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setEdit(!edit);
@@ -30,7 +21,7 @@ const GeneralExperience = () => {
 				type="text"
 				value={name}
 				name="name"
-				onChange={handleInput}
+				onChange={ (e) => setName(e.target.value)}
 			/><br />
 			<label className="form-label">email</label>
 			<input
@@ -38,7 +29,7 @@ const GeneralExperience = () => {
 				type="email"
 				value={email}
 				name="email"
-				onChange={handleInput}
+				onChange={(e) => setEmail(e.target.value)}
 			/><br />
 			<label className="form-label">Phone</label>
 			<input
@@ -46,7 +37,7 @@ const GeneralExperience = () => {
 				type="phone"
 				value={phone}
 				name="phone"
-				onChange={handleInput}
+				onChange={(e) => setPhone(e.target.value)}
 			/><br />
 		</form>;
 
